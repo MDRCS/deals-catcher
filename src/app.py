@@ -16,8 +16,6 @@ print(Database.DATABASE.client)
 def home():
     return render_template('home.html')
 
-
-
 app.register_blueprint(user_blueprint,url_prefix="/users")
 app.register_blueprint(store_blueprint,url_prefix="/stores")
 app.register_blueprint(alerts_blueprint,url_prefix="/alerts")
