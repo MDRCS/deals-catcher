@@ -5,6 +5,7 @@ from datetime import datetime,timedelta
 from src.models.items.item import Item
 import src.models.alerts.constants as AlertConstants
 from src.common.database import Database as db
+import src.config as conf
 
 class Alert(object):
 
@@ -21,15 +22,15 @@ class Alert(object):
 
     def send(self):
         return requests.post(
-            AlertConstants.MAILGUN_API_URL,
-            auth=("api", AlertConstants.MAILGUN_API_KEY),
-            data={"from": AlertConstants.FROM,
+            conf.MAILGUN_API_URL,
+            auth=("api", conf.MAILGUN_API_KEY),
+            data={"from": conf.FROM,
                   "to": self.user_email,
                   "subject": "PRICE LIMIT REACHED FOR {}".format(self.item.name),
-                  "text": "WE HAVE FUN A DEAL! ({}). to navigate to alert visit {}".format(self.item.url, "http://pricing.mdrahali.com/alerts/{}".format(self._id))})
+                  "text": "WE HAVE FUN A DEAL! ({}). to navigate to alert visit {}".format(self.item.url, "https://deals-catcher.herokuapp.com/alerts/{}".format(self._id))})
 
     @classmethod
-    def find_needing_update(cls,minutes_since_update=AlertConstants.ALERT_TIMEOUT):
+    def find_needing_update(cls,minutes_since_update=conf.ALERT_TIMEOUT):
         last_updated_limit = datetime.utcnow() - timedelta(minutes=minutes_since_update)
         return [cls(**alert) for alert in db.find(AlertConstants.Collection,
                                                   {'last_checked':

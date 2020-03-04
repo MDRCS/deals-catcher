@@ -1,5 +1,8 @@
+import os
 
 DEBUG = True
-ADMINS = frozenset([
-    "mdr.ga99@gmail.com"
-])
+MAILGUN_API_URL = os.environ.get('MAILGUN_API_URL')
+MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
+FROM = os.environ.get('FROM')
+ALERT_TIMEOUT = 10
+ADMINS = os.environ.get('ADMIN_EMAIL')
