@@ -4,7 +4,7 @@ import pymongo
 
 
 class Database:
-    URI = os.environ.get('MONGOLAB_URI')
+    URI = "mongodb://127.0.0.1:27017/alerts"
     DATABASE = pymongo.MongoClient(URI).get_default_database()
 
     @staticmethod
