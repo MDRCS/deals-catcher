@@ -1,7 +1,6 @@
 import uuid
 from src.common.database import Database as db
 import src.models.stores.constrants as StoreConstants
-import src.models.items.constants as ItemConstants
 import src.models.stores.errors as StoreErrors
 
 class Store(object):
