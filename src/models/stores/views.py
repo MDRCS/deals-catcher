@@ -2,17 +2,18 @@ from flask import Blueprint,render_template,request,redirect,url_for
 from src.models.stores.decorators import requires_admin_permission
 from src.models.stores.store import Store
 import src.models.users.decorators as user_decorators
+import src.config as config
 
 store_blueprint = Blueprint('stores',__name__)
 
 @store_blueprint.route('/')
 def index():
     stores = Store.all()
-    return render_template('stores/store_index.html',stores=stores)
+    return render_template('stores/store_index.html',stores=stores,config=config)
 
 @store_blueprint.route('/store/<string:store_id>')
 def store_page(store_id):
-    return render_template('stores/store.html', store=Store.getById(store_id))
+    return render_template('stores/store.html', store=Store.getById(store_id),config=config)
 
 @store_blueprint.route('/new',methods=['GET','POST'])
 @user_decorators.requires_login
