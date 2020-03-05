@@ -4,7 +4,7 @@ import pymongo
 
 
 class Database:
-    URI = os.environ.get('MONGODB_URI')
+    URI = "mongodb://mdrahali:MohamedElRahali-123@ds157500.mlab.com:57500/heroku_03cb6ms7?retryWrites=false"
     DATABASE = pymongo.MongoClient(URI).get_default_database()
 
     @staticmethod
