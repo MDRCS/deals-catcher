@@ -6,6 +6,8 @@
 	</h1>
 </div>
 <p>All URLs in this store should start with <strong>{{ store.url_prefix }}</strong></p>
+<h1>{{ session['email'] }}</h1>
+<h1>{{ config.ADMINS }} admin</h1>
 {% if session['email'] == config.ADMINS %}
 <form method="post">
 	<div class="panel panel-default">
