@@ -15,4 +15,4 @@ pip==20.0.2
 setuptools==45.2.0
 soupsieve==2.0
 uWSGI==2.0.18
-urllib3==1.25.8
+urllib3==1.26.5
